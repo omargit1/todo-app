@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - todo-app',
-    title: 'todo-app',
+    titleTemplate: '%s - start-app',
+    title: 'start app',
     htmlAttrs: {
       lang: 'en'
     },
@@ -48,7 +48,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'https://reqres.in/api/'
+
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

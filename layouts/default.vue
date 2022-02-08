@@ -66,13 +66,13 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Users',
-          to: '/users'
+          to: '/user-list'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: ''
     }
   }
 }
