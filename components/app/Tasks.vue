@@ -40,7 +40,7 @@
             <v-col>
             <ul>
                 <li v-for="(t, index) in tasksDone" :key="index">
-                    <v-card  @click.prevent="passToDo(t)"> 
+                    <v-card  @dblclick.prevent="remove(t)"> 
                         <v-card-title class="done"> {{ t.label}} </v-card-title>
                     </v-card>
                 </li>
@@ -93,14 +93,9 @@ export default {
 
             this.$store.dispatch('task/updateStatus', task)
         },
-        passToDo(t) {
+        remove(t) {
             // console.log('passToDo', t)
-            const task = new Task()
-            task.id  = t.id
-            task.status  = 'TODO'
-            task.label  = t.label
-
-            this.$store.dispatch('task/updateStatus', task)
+            this.$store.dispatch('task/removeTask', t.id)
         }
     },
     computed : {

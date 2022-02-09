@@ -19,6 +19,10 @@ export const mutations = {
     },
     addTask(state, task) {
         state.tasks.push(task)
+    },
+    deleteTask(state, id) {
+        let indToDelete = state.tasks.findIndex(t => t.id == id)
+        state.tasks.splice(indToDelete, 1)
     }
 }
 
@@ -34,5 +38,8 @@ export const actions = {
     updateStatus({ commit }, task) {
         // console.log('updateStatus | task', task)
         commit('setStatus', { id: task.id, status: task.status })
+    },
+    removeTask({ commit }, id) {
+        commit('deleteTask', id)
     }
 }
