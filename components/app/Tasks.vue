@@ -71,7 +71,9 @@ export default {
             t.id = Math.floor(Math.random() * 100)
             t.label = this.labelTask
             t.status = 'TODO'
-            this.$store.dispatch('task/addTask', t)
+            if(this.labelTask) {
+                this.$store.dispatch('task/addTask', t)
+            }
             this.labelTask = ''
         },
         passInProgress(t) {
