@@ -6,8 +6,8 @@
         <VuetifyLogo />
       </v-card>
       <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js start-app
+        <v-card-title class="headline justify-center" >
+          Welcome  
         </v-card-title>
    
       </v-card>

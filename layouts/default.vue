@@ -63,10 +63,15 @@ export default {
           title: 'Welcome',
           to: '/'
         },
-        {
+       /* {
           icon: 'mdi-chart-bubble',
           title: 'Users',
           to: '/user-list'
+        }, */
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Tasks',
+          to: '/tasks'
         }
       ],
       miniVariant: false,
