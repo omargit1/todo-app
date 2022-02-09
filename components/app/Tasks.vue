@@ -51,8 +51,7 @@
             <v-col>
                     <v-row>
                         <v-col class="col-4">
-                            <v-text-field v-model="labelTask" label="add task" ></v-text-field>
-                            <v-btn class="primary" @click.prevent="addTask">ADD</v-btn>
+                            <v-text-field v-model="labelTask" label="add task" @click:append="addTask" append-icon="mdi-plus"></v-text-field>
                         </v-col>
                     </v-row>
             </v-col>
