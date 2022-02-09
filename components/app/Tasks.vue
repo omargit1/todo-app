@@ -1,5 +1,14 @@
 <template>
     <v-container class="grey lighten-5">
+        <v-row>
+            <v-col>
+                <v-row>
+                    <v-col class="col-4">
+                        <v-text-field v-model="labelTask" label="add task" @click:append="addTask" append-icon="mdi-plus"></v-text-field>
+                    </v-col>
+                </v-row>
+            </v-col>
+        </v-row>
         <v-row no-gutters>
             <v-col>
                 <v-card>
@@ -47,15 +56,7 @@
             </ul>
             </v-col>
         </v-row>
-        <v-row>
-            <v-col>
-                    <v-row>
-                        <v-col class="col-4">
-                            <v-text-field v-model="labelTask" label="add task" @click:append="addTask" append-icon="mdi-plus"></v-text-field>
-                        </v-col>
-                    </v-row>
-            </v-col>
-        </v-row>
+
     </v-container>    
 </template>
 <script>
