@@ -58,12 +58,12 @@ export default {
       drawer: false,
       fixed: true,
       items: [
-        {
+       /* {
           icon: 'mdi-apps',
           title: 'Welcome',
           to: '/'
         },
-       /* {
+        {
           icon: 'mdi-chart-bubble',
           title: 'Users',
           to: '/user-list'
