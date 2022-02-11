@@ -72,6 +72,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Tasks',
           to: '/tasks'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Game',
+          to: '/games'
         }
       ],
       miniVariant: false,
