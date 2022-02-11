@@ -89,6 +89,9 @@ export default {
             score : 'getScore'
         }),
       
+    },
+    mounted() {
+        this.$store.dispatch('score/resetScore')
     }
 }
 

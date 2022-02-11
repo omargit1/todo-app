@@ -8,6 +8,9 @@ export const mutations = {
     },
     decrementScore(state, points) {
         state.score -= points
+    },
+    resetScore(state) {
+        state.score = 0
     }
 }
 
@@ -21,5 +24,8 @@ export const actions = {
     },
     decrementScore({ commit }, points) {
         commit('decrementScore', points)
+    },
+    resetScore({ commit }, points) {
+        commit('resetScore', points)
     }
 }
