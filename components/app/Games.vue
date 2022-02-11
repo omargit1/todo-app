@@ -12,7 +12,7 @@
         </template>
       </v-row>
       <v-row align="center">
-          <v-col align="center" class="col-2">
+          <v-col align="center" class="col-4">
               <v-card style="height:60px">
                   <v-card-title style="height:50px" class="justify-center">
                     Score 
