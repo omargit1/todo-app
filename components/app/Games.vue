@@ -78,8 +78,7 @@ export default {
                 } else {
                     c.num = Math.max(...rands) + 1
                 }
-                let rand2 = Math.floor(Math.random() * 1000) 
-                c.color = (rand2 % 2 == 0) ? 'red' : 'green'
+                c.color = (Math.random() > 0.5) ? 'red' : 'green'
                 c.isActive = false
                 items.push(c)
             }
