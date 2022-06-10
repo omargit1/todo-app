@@ -1,6 +1,6 @@
 export default function getRules() {
 
     return {
-        required: val => !!val || 'Required field'
+        required: val => (!!val) || 'Required field',
     }
 }

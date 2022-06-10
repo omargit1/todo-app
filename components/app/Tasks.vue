@@ -1,73 +1,87 @@
 <template>
-    <v-container class="grey lighten-5">
+  <v-container class="grey lighten-5">
+    <v-row>
+      <v-col>
         <v-row>
-            <v-col>
-                <v-row>
-                    <v-col class="col-4">
-                        <v-text-field v-model="labelTask" label="add task" @click:append="addTask" append-icon="mdi-plus"></v-text-field>
-                    </v-col>
-                </v-row>
-            </v-col>
+          <v-col class="col-4">
+            <v-text-field
+              v-model="labelTask"
+              label="add task"
+              @click:append="addTask"
+              append-icon="mdi-plus"
+            ></v-text-field>
+            <span class="msg-error">{{ messageError }}</span>
+          </v-col>
         </v-row>
-        <v-row no-gutters>
-            <v-col>
-                <v-card>
-                    <v-card-title class="title">TO DO</v-card-title>
-                </v-card>
-            </v-col>
-            <v-col>
-                <v-card>
-                    <v-card-title class="title">IN PROGRESS</v-card-title>
-                </v-card>
-            </v-col>
-            <v-col>
-                <v-card>
-                    <v-card-title class="title">DONE</v-card-title>
-                </v-card>
-            </v-col>
-        </v-row>
-        <br/>
-        <v-row no-gutters>
-            <v-col>
-            <ul>
-                <li v-for="(t, index) in tasksToDo" :key="index">
-                    <v-card @click="passInProgress(t)" > 
-                        <v-card-title class="todo"> {{ t.label }}</v-card-title>
-                    </v-card>
-                </li>
-            </ul>
-            </v-col>
-            <v-col>
-            <ul>
-                <li v-for="(t, index) in tasksInProgress" :key="index">
-                    <v-card @click.prevent="passDone(t)" id="inprogressEl"> 
-                        <v-card-title class="inprogress"> {{ t.label}}</v-card-title>
-                    </v-card>
-                </li>
-            </ul>
-            </v-col>
-            <v-col>
-            <ul>
-                <li v-for="(t, index) in tasksDone" :key="index">
-                    <v-card  @dblclick.prevent="remove(t)"> 
-                        <v-card-title class="done"> {{ t.label}} </v-card-title>
-                    </v-card>
-                </li>
-            </ul>
-            </v-col>
-        </v-row>
+      </v-col>
+    </v-row>
 
-    </v-container>    
+    <v-row no-gutters>
+      <v-col>
+        <v-card>
+          <v-card-title class="title">TO DO</v-card-title>
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card>
+          <v-card-title class="title">IN PROGRESS</v-card-title>
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card>
+          <v-card-title class="title">DONE</v-card-title>
+        </v-card>
+      </v-col>
+    </v-row>
+    <br />
+    <v-row no-gutters>
+      <v-col>
+        <ul>
+          <li v-for="(t, index) in tasksToDo" :key="index">
+            <v-card @click="passInProgress(t)">
+              <v-card-title class="todo">{{ t.label }}</v-card-title>
+            </v-card>
+          </li>
+        </ul>
+      </v-col>
+      <v-col>
+        <ul>
+          <li v-for="(t, index) in tasksInProgress" :key="index">
+            <v-card @click.prevent="passDone(t)" id="inprogressEl">
+              <v-card-title class="inprogress">{{ t.label}}</v-card-title>
+            </v-card>
+          </li>
+        </ul>
+      </v-col>
+      <v-col>
+        <ul>
+          <li v-for="(t, index) in tasksDone" :key="index">
+            <v-card @dblclick.prevent="remove(t)">
+              <v-card-title class="done">{{ t.label}}</v-card-title>
+            </v-card>
+          </li>
+        </ul>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
 import Task from "~/model/componentObjects/task"
 import { mapGetters } from 'vuex'
+import FormMixin from "../form/FormMixin";
 export default {
+    mixins : [ FormMixin ], //  not used
     data : () => ({
-        labelTask : ''
+        labelTask : '',
+        messageError: ''
     }),
     methods : {
         addTask() {
+            if(this.labelTask.trim().length == 0) {
+                this.messageError = "Required field" 
+                return;
+            }
+            this.messageError = ""
             const t = new Task()
             t.id = Math.floor(Math.random() * 100)
             t.label = this.labelTask
@@ -119,22 +133,26 @@ export default {
 
 <style>
 li {
-    list-style: none;
+  list-style: none;
 }
 .todo {
-    background-color: rgb(157, 236, 236);
-    margin-bottom: 4px;
+  background-color: rgb(157, 236, 236);
+  margin-bottom: 4px;
 }
 .inprogress {
-    background-color: rgb(142, 170, 230);
-    margin-bottom: 4px;
+  background-color: rgb(142, 170, 230);
+  margin-bottom: 4px;
 }
 .done {
-    background-color: green;
-    margin-bottom: 4px;
+  background-color: green;
+  margin-bottom: 4px;
 }
 .title {
-    background-color: rgb(242, 255, 127);
-    margin-right: 4px;
+  background-color: rgb(242, 255, 127);
+  margin-right: 4px;
+}
+.msg-error {
+  color: red;
+  font-style: italic;
 }
 </style>
